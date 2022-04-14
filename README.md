@@ -1,6 +1,7 @@
 # mycode
 
 My introductory dive into Python and GitHub
+Including learning how to version control projects with git.
 
 ## Getting Started
 
