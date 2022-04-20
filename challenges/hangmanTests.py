@@ -22,6 +22,7 @@ elif uPick.lower() == "mineral":
     theAnswer = (random.choice(rockList))
 else :
     print("Sorry, that wasn't an option")
+    quit()
 
 print(f"\n  Okay, let's play! \n ")
 
