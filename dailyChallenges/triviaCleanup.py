@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+"""ECMelander | TLG at Alta3
+    learning about html module
+    simply cleaning up text, for basic game format see triviaCleanupb.py"""
 
 def main() :
     import html
 
+    # a trivia output from https://opentdb.com/api_config.php with HTML formatting issues
     trivia= {
          "category": "Entertainment: Film",
          "type": "multiple",

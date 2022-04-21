@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" ECMelander | TLG at ALta3
+    a game of hangman picking four character words letter-by-letter"""
 
 import random
 
@@ -34,6 +36,10 @@ def main():
         uAnswer =  "".join([ letter0 , letter1 , letter2 , letter3 ])
 
         uGuess = (input(f"Guess what four letter {uPick} I am thinking of: \n   {uAnswer} \n Pick any letter \n> ")).lower()
+
+        if uGuess.lower() == theAnswer :
+            print(f"Good Job! {theAnswer.title()} was the {uPick} I was thinking of!")
+            break
 
         if counter == 10 :
             print(f"\n Sorry, {theAnswer.title()} was the {uPick} I was thinking of. \n Better luck next time.")

@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
+"""ECMelander | TLG at Alta3
+    learning about html module"""
+
 
 import html
 
 def main():
 
+    # a trivia output from https://opentdb.com/api_config.php with HTML formatting issues
     trivia= {
             "category": "Entertainment: Film",
             "type": "multiple",
@@ -16,13 +20,14 @@ def main():
             ]
         }
 
+    # establishing variables from the dictionary above
     trivQ = trivia["question"]
     trivCA = html.unescape(trivia["correct_answer"])
     trivIA0 = html.unescape(trivia["incorrect_answers"][0])
     trivIA1 = html.unescape(trivia["incorrect_answers"][1])
     trivIA2 = html.unescape(trivia["incorrect_answers"][2])
-    # theAnswer = "C"
 
+    # print the trivia question with multiple choice
     print(f"\n{trivQ}")
 
     print(f" A. {trivIA0}")
@@ -30,8 +35,10 @@ def main():
     print(f" C. {trivCA}")
     print(f" D. {trivIA2}")
 
+    # collect user input
     uAnswer = input("\nWhat is the correct answer? \n A B C or D \n> ")
 
+    # conditional to determine if input is correct
     if uAnswer.upper() == "C":
         print("That is correct!")
     else:
