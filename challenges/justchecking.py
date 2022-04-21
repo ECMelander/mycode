@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+"""ECMelander | TLG at Alta3
+    a scratch file for random script testing and debugging"""
 
-uAnswer = "corn"
-uPick = "vegetable"
-
-print(f"Good Job! {uAnswer.upper()} was the {uPick} I was thinking of!")
+print("this is a test")
+print("space", "\n"*5)
+print("of the line break")
