@@ -13,6 +13,15 @@ def main():
     vegeList = [ "bean" , "kale" , "corn" , "okra" ]
     rockList = [ "iron" , "gold" , "lead" , "jade" ]
 
+    wordBank = [{"beastList" : [ "bear" , "seal" , "puma" , "wolf" ],
+                "vegeList" : [ "bean" , "kale" , "corn" , "okra" ],
+                "rockList" : [ "iron" , "gold" , "lead" , "jade" ]
+                }]
+
+    for x in wordBank :
+        random.shuffle(x["beastList"])
+
+
     uPick = input("\nLet's play HANGMAN!\nPick a category: \n animal, vegetable, mineral\n> ")
 
     if uPick.lower() == "animal":

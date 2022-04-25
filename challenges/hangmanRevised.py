@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ECMelander | TLG at Alta3
-    a scratch file for random script testing and debugging"""
+    my updated hangman game"""
 
 import os
 import random
@@ -22,7 +22,6 @@ def main() :
             uCategory = input("\nPick a category: \n animal, vegetable, mineral\n> ")
             if uCategory.lower() in (x.keys()) :
                 random.shuffle(x[uCategory])
-                #print(x[uCategory])
                 theAnswer = (x[uCategory][0])
 
                 break
@@ -34,34 +33,16 @@ def main() :
     answerLen = len(theAnswer)
     blankList = (list("_"*answerLen))
     blankJoin = "".join(blankList)
-    #print(blankList)
     answerList = (list(theAnswer))
     answerList.append(x[uCategory][0])
-                       
-    #print(x.keys())
-    #print(answerLen)
-    #print(answerList)
-    
 
-    #uGuess = input(f"\nGuess what {uCategory} I am thinking of.  It has {answerLen} letters: \n   ____ \n Pick any letter \n> ").lower()
-
-
-    
     os.system("clear")
     print(f"\n  Okay, let's play! \n ")
 
 
     while counter < 10 and blankJoin != theAnswer :
         counter += 1
-        print(theAnswer)
-        #blankJoin = "".join(blankList)
-        #uAnswer =  "".join([ letter0 , letter1 , letter2 , letter3 ])
         uGuess = input(f"\nGuess what {uCategory} I am thinking of.  It has {answerLen} letters: \n   {blankJoin} \n\n Pick any letter \n> ").lower()
-
-        if uGuess.lower() == theAnswer :
-            os.system("clear")
-            print(f"Good Job! {theAnswer.title()} was the {uCategory} I was thinking of!\n")
-            break
 
         if counter == 10 :
             os.system("clear")
@@ -69,16 +50,13 @@ def main() :
             break
 
         if uGuess in answerList :
-            
-            #print(f"\n Nice Job! Keep going!")
             x = int(answerList.index(uGuess))
             blankList.pop(x)
             blankList.insert(x,uGuess)
-            #print(blankJoin)
             blankJoin = "".join(blankList)
             if blankJoin == theAnswer :
                 os.system("clear")
-                print(f"Good Job! {theAnswer.title()} was the {uCategory} I was thinking of!\n")
+                print(f"\nGood Job! {theAnswer.title()} was the {uCategory} I was thinking of!\n")
                 break
             else :
                 os.system("clear")
@@ -95,14 +73,3 @@ def main() :
             
 
 main()
-
-#    wordBank = [{"beastList" : [ "bear" , "seal" , "puma" , "wolf" ],
-#                "vegeList" : [ "bean" , "kale" , "corn" , "okra" ],
-#                "rockList" : [ "iron" , "gold" , "lead" , "jade" ]
-#                }]
-
-#    uCategory = input("\nLet's play HANGMAN!\nPick a category: \n animal, vegetable, mineral\n> ")
-
-#    for x in wordBank :
-#        random.shuffle(x["beastList"])
-#        print(x["beastList"])
