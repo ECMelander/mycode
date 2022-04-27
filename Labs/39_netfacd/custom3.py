@@ -4,11 +4,11 @@ import netifaces
 import os
 
 
-def mac(iFace) :
-        print(f"The MAC address of {iFace} is:\n{(netifaces.ifaddresses(iFace)[netifaces.AF_LINK])[0]['addr']}")
+def mac(macFace) :
+        print(f"MAC address : {(netifaces.ifaddresses(macFace)[netifaces.AF_LINK])[0]['addr']}")
 
-def ip(iFace) :
-        print(f"The IP address of {iFace} is:\n{(netifaces.ifaddresses(iFace)[netifaces.AF_INET])[0]['addr']}")
+def ip(ipFace) :
+        print(f" IP address : {(netifaces.ifaddresses(ipFace)[netifaces.AF_INET])[0]['addr']}")
 
 def main() :
 
@@ -27,7 +27,7 @@ def main() :
     while addr not in addrType :
         addr = input(">").upper()
 
-    print()
+    print(f"\n     ====== {iFace} =====")
 
     if addr == "MAC" :
         mac(iFace)
