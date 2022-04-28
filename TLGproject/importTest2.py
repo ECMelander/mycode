@@ -3,11 +3,29 @@
 import requests
 import pandas as pd
 
-urlc = "https://data.wa.gov/resource/mcr6-ujqw.csv"
-#urlj = "https://data.wa.gov/resource/mcr6-ujqw.json"
+jsonFile = "/home/student/static/mcr6-ujqw.json"
 
-impC = requests.get(urlc)
-#impJ = requests.get(url).json()
+df= pd.read_json(jsonFile, convert_dates=['registration_date'])
 
-df = pd.read_csv(impC)
-print(len(df))
+#print(len(df))
+
+df.sort_values(['registration_date'], inplace=True)
+df.drop_duplicates(['apprentice_id'], inplace=True)
+df.set_index(['apprentice_id'], inplace=True)
+
+#print(len(df))
+
+df["year"] = df["registration_date"].dt.year
+
+df.replace( 'Other than Vietnam era vet' , 'Veteran' , inplace = True)
+df.replace( 'Vietnam era vet' , 'Veteran' , inplace = True)
+
+
+#print(df.veteran.unique())
+#print(df[[ 'last_name' , 'first_name' , 'year' , 'veteran' , 'sex' ]].head(30))
+#print(df.sex.unique())
+#print(len(df))
+#print(df.dtypes)
+#rint(df.head())
+
+print(df.groupby(['year' , 'veteran']).size())

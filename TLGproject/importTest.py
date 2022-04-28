@@ -11,11 +11,6 @@ from sodapy import Socrata
 # in place of application token, and no username or password:
 client = Socrata("data.wa.gov", None)
 
-# Example authenticated client (needed for non-public datasets):
-# client = Socrata(data.wa.gov,
-#                  MyAppToken,
-#                  userame="user@example.com",
-#                  password="AFakePassword")
 
 # First 2000 results, returned as JSON from API / converted to Python list of
 # dictionaries by sodapy.
@@ -24,3 +19,4 @@ results = client.get("mcr6-ujqw", limit=200000)
 # Convert to pandas DataFrame
 results_df = pd.DataFrame.from_records(results)
 print(len(results_df))
+print(results_df.columns)
