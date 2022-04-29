@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+""" ECMelander | TLG at Alta3
+    Filtering and displaying data for veterans in apprenticeships
+    Data from data.wa.gov"""
 
 import pandas as pd
 from sodapy import Socrata
