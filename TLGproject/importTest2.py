@@ -45,7 +45,7 @@ df = df[[ 'last_name' , 'first_name' , 'year' , 'veteran' , 'sex' ]]
 #df.to_csv("/home/student/static/apprenticeTest.csv")
 
 
-#sns.countplot( x = 'year' , data = 'df' , hue = 'veteran')
+
 
 sns.countplot(x="year", hue="veteran", data=df)
 
