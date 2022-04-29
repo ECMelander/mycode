@@ -18,5 +18,6 @@ results = client.get("mcr6-ujqw", limit=200000)
 
 # Convert to pandas DataFrame
 results_df = pd.DataFrame.from_records(results)
+print(type(results_df))
 print(len(results_df))
 print(results_df.columns)
