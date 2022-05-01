@@ -30,16 +30,16 @@ def main() :
 
     # setting variable to filter by year
     yrList = list(df['year'].unique())          # creating list for validating user input
-    yrValue = 0
+    yrMin = 0
     print("Enter starting year:")
-    while yrValue not in yrList :               # while loop to ensure valid input
+    while yrMin not in yrList :               # while loop to ensure valid input
         try :
-            yrValue = int(input('> '))
+            yrMin = int(input('> '))
         except :
             print("Please enter a valid year")
 
     # filter according to specified year
-    year_filter = df['year'] >= yrValue                                             # setting filter variable
+    year_filter = df['year'] >= yrMin                                             # setting filter variable
     df = df.loc[year_filter, ['last_name', 'first_name', 'year', 'sex', 'veteran']] # applying filter and selecting relevent columns
 
     ###for debugging###
