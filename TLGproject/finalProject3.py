@@ -26,8 +26,9 @@ def totalVets(df_V) :
     df_V['Veterans'] = df_V['veteran__Veteran'].astype(int)
     #print(df_gbU_copy)
     df_V = df_V[['Veterans', 'Percentage']]
-    print(f"\nTotal Veteran Apprenticeship Participation\n      from {yrMin} to {yrMax}\n")    
-    print(df_V)    
+    #print(f"\nTotal Veteran Apprenticeship Participation\n      from {yrMin} to {yrMax}\n")    
+    #print(df_V)
+    return df_V
 
 def femaleVets(df_F) :
     sex_filter = df_F['sex'] == 'Female'                                             # setting filter variable
@@ -45,8 +46,10 @@ def femaleVets(df_F) :
     #df_F['Female_Vet'] = df_F['Female_Vet'].astype(int)
     #df_F['Percent_Change'] = df_F.pct_change([('veteran', 'Non-vet')])
     df_F = df_F[['Female_Vet', 'Percent_Change']]
-    print(f"\nFemale Veteran Apprenticeship Participation\n      from {yrMin} to {yrMax}\n")    
-    print(df_F)    
+    #print(f"\nFemale Veteran Apprenticeship Participation\n      from {yrMin} to {yrMax}\n")    
+    #print(df_F)
+    return df_F
+
 
 
 
@@ -55,10 +58,15 @@ def main() :
     global yrMax
     global yrMin
 
+
+    jsonFile = "/home/student/static/mcr6-ujqw.json"
+    #df= pd.read_json(jsonFile, convert_dates=['registration_date'])
+    df= pd.read_json(jsonFile)    
+
     # importing data
-    client = Socrata("data.wa.gov", None)               # define variable for location of source data
-    results = client.get("mcr6-ujqw", limit=200000)     # import source data as results
-    df = pd.DataFrame.from_records(results)             # Convert to pandas DataFrame as df
+    #client = Socrata("data.wa.gov", None)               # define variable for location of source data
+    #results = client.get("mcr6-ujqw", limit=200000)     # import source data as results
+    #df = pd.DataFrame.from_records(results)             # Convert to pandas DataFrame as df
 
     ###for debugging###
     print(f"\nStarting number of rows:  {len(df)}")
@@ -95,10 +103,20 @@ def main() :
     #print(df.dtypes)
     #rint(df.head())
 
-    totalVets(df)
-    femaleVets(df)
 
+
+    
+
+    print(f"\nTotal Veteran Apprenticeship Participation\n      from {yrMin} to {yrMax}\n")    
+    df_Vm = totalVets(df)
+    print(df_Vm)
     input()
+
+    print(f"\nFemale Veteran Apprenticeship Participation\n      from {yrMin} to {yrMax}\n")    
+    df_Fm = femaleVets(df)
+    print(df_Fm)
+    input()
+
     print()
     print(df.groupby(['year' , 'veteran']).size())
     sns.countplot(x='year', hue='veteran', data=df)
